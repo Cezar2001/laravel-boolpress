@@ -19,6 +19,8 @@
     <div id="app">
 
     </div>
+    
+    @include("layouts.navbar")
 
     <script src="{{asset("js/vue.js")}}"></script>
 </body>
