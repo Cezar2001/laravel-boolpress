@@ -1,4 +1,5 @@
 window.Vue = require('vue');
+import App from './views/App.vue';
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +21,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#appVue',
-    render: h => h(App)
+    el: '#app',
+    render: (h) => h(App)
 });
