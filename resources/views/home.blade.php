@@ -20,7 +20,7 @@
 
     </div>
     
-    @include("layouts.navbar")
+    @include("partials.navbar")
 
     <script src="{{asset("js/vue.js")}}"></script>
 </body>
