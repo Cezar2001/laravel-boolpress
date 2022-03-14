@@ -76,5 +76,8 @@
             @yield('content')
         </main>
     </div>
+
+    
+    <script src="{{ asset('js/vue.js') }}"></script>
 </body>
 </html>
