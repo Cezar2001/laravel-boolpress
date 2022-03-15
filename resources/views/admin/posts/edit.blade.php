@@ -4,7 +4,7 @@
 <div class="container">
     <form method="POST" action="{{ route('admin.posts.update', $post->id) }}">
         @csrf
-        @method('PUT')
+        @method('patch')
 
         <div class="form-group mb-3">
             <label class="mb-3">Titolo</label>
@@ -17,7 +17,7 @@
         <div class="form-group mb-3">
             <label class="mb-3">Contenuto</label>
             <textarea name="content" rows="10" class="form-control @error('content') is-invalid @enderror"
-                placeholder="Inserisci il contenuto" required>{{ old('content') }}</textarea>   
+                placeholder="Inserisci il contenuto" required>{{ old('content', $post->content) }}</textarea>   
         </div>
 
         @error('content')
