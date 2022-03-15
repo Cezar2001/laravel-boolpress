@@ -1,14 +1,17 @@
 <template>
-<div>
-    <h1>Welcome in Vue.js</h1>
-</div>
-    
+    <div>
+        <NavBar />
+    </div>
 </template>
 
 <script>
+
+import NavBar from "../components/NavBar.vue";
+
 export default {
     name: "app",
     components: {
+        NavBar,
     }
 }
 </script>
