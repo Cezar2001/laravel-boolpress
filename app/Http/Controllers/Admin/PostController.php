@@ -108,8 +108,6 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->fill($data);
 
-        
-
         $slug = Str::slug($post->title);
         $exists = Post::where("slug", $slug)->first();
         $counter = 1;
