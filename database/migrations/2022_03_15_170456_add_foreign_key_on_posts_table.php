@@ -16,10 +16,9 @@ class AddForeignKeyOnPostsTable extends Migration
         Schema::table('posts', function (Blueprint $table) {
 
             $table->unsignedBigInteger('user_id')->nullable();
-
-            $table->foreignId('user_id')
-                ->after('slug')
-                ->constrained();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
       
             $table->foreignId("category_id")
                 ->after('user_id')

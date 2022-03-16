@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -27,7 +29,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view("admin.posts.create", compact("categories", "tags"));
     }
 
     /**
@@ -40,7 +45,9 @@ class PostController extends Controller
     {
         $data = $request->validate([
             "title" => "required|min:5",
-            "content" => "required|min:15"
+            "content" => "required|min:15",
+            "category_id" => "nullable",
+            "tags" => "nullable"
         ]);
 
         $post = new Post();
@@ -63,6 +70,8 @@ class PostController extends Controller
         $post->slug = $slug;
 
         $post->save();
+
+        $post->tags()->attach($data["tags"]);
 
         return redirect()->route('admin.posts.index');
     }
@@ -88,7 +97,14 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('admin.posts.edit', [
+            "post" => $post,
+            "categories" => $categories,
+            "tags" => $tags,
+        ]);
     }
 
     /**
@@ -102,7 +118,9 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|max:20',
-            'content' => 'required|min:10'
+            'content' => 'required|min:10',
+            "category_id" => "nullable|exists:categories,id",
+            "tags" => "nullable|exists:tags,id"
         ]);
 
         $post = Post::findOrFail($id);
@@ -125,7 +143,10 @@ class PostController extends Controller
         $post->slug = $slug;
 
         $post->update($data);
-        $post->save();
+
+        if (key_exists("tags", $data)) {
+            $post->tags()->sync($data["tags"]);
+        }
 
         return redirect()->route('admin.posts.show', $post->slug);
     }
@@ -139,7 +160,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+
+        $post->tags()->detach();
+
         $post->delete();
+
         return redirect()->route('admin.posts.index');
     }
 }

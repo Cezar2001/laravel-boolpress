@@ -20,6 +20,21 @@
                             Data ultima modifica: {{ $post->updated_at }}
                             <br>
                             Slug: {{ $post->slug }}
+                            <br>
+                            {{-- Utente: {{ $post->user->name }} --}}
+                            <br>
+                            @if($post->category !== null)
+                                Category: {{ $post->category->code }}
+                            @endif
+
+                            <br>
+
+                            @if($post->tags !== null)
+                                Tags: 
+                                @foreach($post->tags as $tag)
+                                    #{{ $tag->name }}
+                                @endforeach
+                            @endif
                         </div>
                         
                     </div>
