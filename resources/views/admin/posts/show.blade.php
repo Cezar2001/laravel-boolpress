@@ -13,16 +13,32 @@
                         {{ $post->content }}
 
                         <div class="mt-3">
+                            @php
+                                use Carbon\Carbon;
+                                $dateFormat = "d/m/Y H:i";
+                            @endphp
+
                             Contenuto: {{ $post->content }}
+                            
                             <br>
-                            Data creazione: {{ $post->created_at }}
+                            
+                            Data creazione: {{ $post->created_at->format($dateFormat) }}
+                            
                             <br>
-                            Data ultima modifica: {{ $post->updated_at }}
+                            
+                            Data ultima modifica: 
+                            
+                            {{ $post->updated_at->format($dateFormat)}}
+                            {{ $post->updated_at->diffForHumans(Carbon::now()) }}
+                            
                             <br>
+                            
                             Slug: {{ $post->slug }}
+                            
                             <br>
                             {{-- Utente: {{ $post->user->name }} --}}
                             <br>
+                            
                             @if($post->category !== null)
                                 Category: {{ $post->category->code }}
                             @endif
