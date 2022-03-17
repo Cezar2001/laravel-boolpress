@@ -42,8 +42,8 @@
                     <form class="ms-auto" action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <a class="btn btn-link" href="{{route('admin.posts.edit', $post->id)}}"><i class="fa-solid fa-pen"></i>Modifica</a>
-                        <button class="btn btn-link" type="submit"><i class="fa-solid fa-trash-can"></i>Elimina</button>
+                        <a class="btn btn-link text-dark" href="{{route('admin.posts.edit', $post->id)}}"><i class="fa-solid fa-pen"></i>Modifica</a>
+                        <button class="btn btn-link text-danger" type="submit"><i class="fa-solid fa-trash-can"></i>Elimina</button>
                         <a href="{{route('admin.posts.index')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i>Annulla</a>
                     </form>
                 </div>

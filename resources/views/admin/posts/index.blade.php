@@ -16,7 +16,7 @@
                             @foreach ($posts as $post)
                                 <li class="list-group-item">{{$post->title}}
                                     <a class="ms-3 me-3" href="{{ route('admin.posts.show', $post->slug) }}" title="Visualizza"><i class="fa-solid fa-eye"></i></a>
-                                    <a href="{{route('admin.posts.edit', $post->id)}}" title="Modifica"><i class="fa-solid fa-pen"></i></a>
+                                    <a class="text-dark" href="{{route('admin.posts.edit', $post->id)}}" title="Modifica"><i class="fa-solid fa-pen"></i></a>
                                 </li>
                             @endforeach
                         </ul>
