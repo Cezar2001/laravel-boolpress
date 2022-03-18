@@ -15,7 +15,7 @@
                         <div class="mt-3">
                             @php
                                 use Carbon\Carbon;
-                                $dateFormat = "d/m/Y H:i";
+                                $dateFormat = "d/m/Y (H:i)";
                             @endphp
 
                             Contenuto: {{ $post->content }}
@@ -29,7 +29,7 @@
                             Data ultima modifica: 
                             
                             {{ $post->updated_at->format($dateFormat)}}
-                            {{ $post->updated_at->diffForHumans(Carbon::now()) }}
+                            ({{ $post->updated_at->diffForHumans(Carbon::now()) }})
                             
                             <br>
                             
@@ -60,7 +60,7 @@
                         @method('delete')
                         <a class="btn btn-link text-dark" href="{{route('admin.posts.edit', $post->id)}}"><i class="fa-solid fa-pen"></i>Modifica</a>
                         <button class="btn btn-link text-danger" type="submit"><i class="fa-solid fa-trash-can"></i>Elimina</button>
-                        <a href="{{route('admin.posts.index')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i>Annulla</a>
+                        <a href="{{route('admin.posts.index')}}"><i class="fa-solid fa-arrow-right-to-bracket"></i>Indietro</a>
                     </form>
                 </div>
             </div>
