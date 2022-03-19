@@ -6,7 +6,7 @@ use App\Post;
 
 
 trait SlugGenerator {
-    protected function generateSlug($postTitle) {
+    protected function generateUniqueSlug($postTitle) {
 
         $slug = Str::slug($postTitle);
 
