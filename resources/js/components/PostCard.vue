@@ -15,7 +15,7 @@
 
                 <div class="card-text" v-for="tag of post.tags" :key="tag.id">#{{ tag.name }}</div>
 
-                <a href="#">Dettagli</a>
+                <router-link :to="{ name:'posts.show', params: { post: post.slug } }">Dettagli</router-link>
             </div>
         </div>
     </div>

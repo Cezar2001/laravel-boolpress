@@ -8,8 +8,10 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Admin</a>
+                        <li class="nav-item" v-for="route in routes" :key="route.path">
+                            <router-link :to="route.path" class="nav-link">
+                                {{ route.meta.linkText }}
+                            </router-link>   
                         </li>
                     </ul>
                 </div>
@@ -20,6 +22,15 @@
 
 <script>
 export default {
+    data() {
+        return {
+            routes: []
+        }
+    },
+
+    mounted() {
+        this.routes = this.$router.getRoutes().filter((route) => !!route.meta.linkText);
+    }
 }
 </script>
 
