@@ -9,7 +9,7 @@
 
                 <div class="card-text" v-html="post.content"></div>
 
-                <div>Data: {{ post.created_at }}</div>
+                <div>Data: {{ formatDate(post.created_at) }}</div>
 
                 <div v-if="post.category">{{ post.category.code }}</div>
 
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
+
 export default {
   props: {
     post: Object,
@@ -30,8 +32,12 @@ export default {
   methods: {
     getPostCover() {
       return "https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"
+    },
+
+    formatDate(date) {
+      return dayjs(date).format('DD/MM/YYYY HH:mm');
     }
-  }
+  },
 };
 </script>
 
