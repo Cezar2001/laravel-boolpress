@@ -2217,9 +2217,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 7]]);
       }))();
     },
-    mounted: function mounted() {
-      this.getPosts();
+    getPostCover: function getPostCover() {
+      return "https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png";
     }
+  },
+  mounted: function mounted() {
+    this.getPosts();
   }
 });
 
@@ -4601,6 +4604,11 @@ var render = function () {
     "div",
     [
       _c("h5", { staticClass: "py-2" }, [_vm._v("Dettagli del Post")]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: { src: _vm.getPostCover() },
+      }),
       _vm._v(" "),
       _c("h4", [_vm._v(_vm._s(_vm.post.title))]),
       _vm._v(" "),

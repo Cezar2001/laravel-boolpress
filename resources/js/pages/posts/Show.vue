@@ -2,7 +2,7 @@
     <div>
         <h5 class="py-2">Dettagli del Post</h5>
 
-        <!-- <img :src="getPostCover()" class="card-img-top" /> -->
+        <img :src="getPostCover()" class="card-img-top" />
 
         <h4>{{ post.title }}</h4>
 
@@ -23,7 +23,7 @@ import axios from "axios";
 export default {
   data() {
       return{
-          post: {}
+          post: {},
       }
   },
 
@@ -31,7 +31,6 @@ export default {
     async getPosts() {
         try {
             const response = await axios.get("/api/posts/" + this.$route.params.post);
-
             this.post = response.data;
 
         } catch(er) {
@@ -41,11 +40,13 @@ export default {
         }
     },
 
+    getPostCover() {
+      return "https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"
+    },
+  },
     mounted() {
         this.getPosts();
     },
-    
-  },
 };
 </script>
 
