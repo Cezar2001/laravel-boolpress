@@ -1,15 +1,13 @@
 <template>
-    <div class="col-2">
+    <div class="col-6">
         <div class="card">
             <div class="card-body">
 
-                <!-- <img :src="getPostCover(post)" class="card-img-top" /> -->
+                <img :src="getPostCover()" class="card-img-top" />
 
                 <h4 class="card-title">{{ post.title }}</h4>
 
                 <div class="card-text" v-html="post.content"></div>
-
-                <div class="">Autore: {{ post.user.name }}</div>
 
                 <div>Data: {{ post.created_at }}</div>
 
@@ -28,9 +26,17 @@ export default {
   props: {
     post: Object,
   },
-  
+
+  methods: {
+    getPostCover() {
+      return "https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png"
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+  .card{
+    margin-top: 25px;
+  }
 </style>
