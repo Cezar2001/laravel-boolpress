@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Tag;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -47,7 +48,8 @@ class PostController extends Controller
             "title" => "required|min:5",
             "content" => "required|min:15",
             "category_id" => "nullable",
-            "tags" => "nullable"
+            "tags" => "nullable",
+            "coverImage" => "nullable"
         ]);
 
         $post = new Post();
@@ -68,6 +70,10 @@ class PostController extends Controller
             }
         }
         $post->slug = $slug;
+
+        if(key_exists("coverImage", $data)) {
+            $post->coverImage = Storage::put("images", $data["coverImage"]);
+        }
 
         $post->save();
 
@@ -122,7 +128,8 @@ class PostController extends Controller
             'title' => 'required|max:20',
             'content' => 'required|min:10',
             "category_id" => "nullable|exists:categories,id",
-            "tags" => "nullable|exists:tags,id"
+            "tags" => "nullable|exists:tags,id",
+            "coverImage" => "nullable"
         ]);
 
         $post = Post::findOrFail($id);
@@ -144,8 +151,19 @@ class PostController extends Controller
         }
         $post->slug = $slug;
 
-        $post->update($data);
+        if(key_exists("coverImage", $data)) {
 
+            if($post->coverImage) {
+                Storage::delete($post->coverImage);
+            }
+            
+            $post->coverImage = Storage::put("images", $data["coverImage"]);
+            
+            $post->save();
+        }
+
+        $post->update($data);
+        
         if (key_exists("tags", $data)) {
             $post->tags()->sync($data["tags"]);
         }

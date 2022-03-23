@@ -5,9 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
+
                     <div class="card-header d-flex">
                         Dettagli post {{$post->title}}
                     </div>
+
+                    @if($post->coverImage)
+                        <img src="{{ asset('storage/' . $post->coverImage) }}" class="img-fluid" alt="">
+                    @else
+                        <img src="https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png" alt="">
+                    @endif
 
                     <div class="card-body">
                         {{ $post->content }}
