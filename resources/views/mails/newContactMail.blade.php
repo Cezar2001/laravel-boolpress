@@ -7,11 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Mail ciao</h1>
-
-    {{-- <ul>
-        <li><strong>Nome Utente:</strong> {{ }} </li>
-        <li><strong>Email:</strong> {{ }} </li>
-    </ul> --}}
+    <h1>Mail Speciale</h1>
 </body>
 </html>
