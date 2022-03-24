@@ -15,7 +15,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/login" v-if="!user"> Login </a>
+                            <a class="nav-link" href="/login" v-if="!user"> Admin </a>
                             <a class="nav-link" href="/admin" v-else> {{ user.name }} </a>
                         </li>
                     </ul>

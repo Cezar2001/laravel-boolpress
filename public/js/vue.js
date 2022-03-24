@@ -4387,7 +4387,7 @@ var render = function () {
                     ? _c(
                         "a",
                         { staticClass: "nav-link", attrs: { href: "/login" } },
-                        [_vm._v(" Login ")]
+                        [_vm._v(" Admin ")]
                       )
                     : _c(
                         "a",
