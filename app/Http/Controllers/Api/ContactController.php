@@ -21,7 +21,7 @@ class ContactController extends Controller
         $newContact->fill($data);
         $newContact->save();
         
-        Mail::to($newContact->email)->send(new NewContactMail());
+        Mail::to("admin@gmail.com")->send(new NewContactMail());
 
         return response()->json($newContact);
     } 
