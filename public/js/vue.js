@@ -1994,6 +1994,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4355,27 +4360,43 @@ var render = function () {
             _c(
               "ul",
               { staticClass: "navbar-nav mb-2 mb-lg-0" },
-              _vm._l(_vm.routes, function (route) {
-                return _c(
-                  "li",
-                  { key: route.path, staticClass: "nav-item" },
-                  [
-                    _c(
-                      "router-link",
-                      { staticClass: "nav-link", attrs: { to: route.path } },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(route.meta.linkText) +
-                            "\n                        "
-                        ),
-                      ]
-                    ),
-                  ],
-                  1
-                )
-              }),
-              0
+              [
+                _vm._l(_vm.routes, function (route) {
+                  return _c(
+                    "li",
+                    { key: route.path, staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        { staticClass: "nav-link", attrs: { to: route.path } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(route.meta.linkText) +
+                              "\n                        "
+                          ),
+                        ]
+                      ),
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _c("li", { staticClass: "nav-item" }, [
+                  !_vm.user
+                    ? _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "/login" } },
+                        [_vm._v(" Login ")]
+                      )
+                    : _c(
+                        "a",
+                        { staticClass: "nav-link", attrs: { href: "/admin" } },
+                        [_vm._v(" " + _vm._s(_vm.user.name) + " ")]
+                      ),
+                ]),
+              ],
+              2
             ),
           ]
         ),
