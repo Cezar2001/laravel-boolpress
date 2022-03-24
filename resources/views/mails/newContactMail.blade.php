@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Mail</h1>
+    <h1>Mail ciao</h1>
 
     {{-- <ul>
         <li><strong>Nome Utente:</strong> {{ }} </li>
